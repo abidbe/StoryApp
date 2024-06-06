@@ -70,7 +70,7 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.12.0")
 
 
-
+    implementation("androidx.paging:paging-runtime:3.0.1")
 
 
 }
