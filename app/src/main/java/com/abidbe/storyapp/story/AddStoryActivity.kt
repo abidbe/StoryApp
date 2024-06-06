@@ -176,22 +176,26 @@ class AddStoryActivity : AppCompatActivity() {
                 MultipartBody.Part.createFormData("photo", compressedFile.name, requestBody)
             val descriptionBody = description.toRequestBody("text/plain".toMediaTypeOrNull())
 
-            val latBody = currentLocation?.latitude?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull())
-            val lonBody = currentLocation?.longitude?.toString()?.toRequestBody("text/plain".toMediaTypeOrNull())
+            val latBody = currentLocation?.latitude?.toString()
+                ?.toRequestBody("text/plain".toMediaTypeOrNull())
+            val lonBody = currentLocation?.longitude?.toString()
+                ?.toRequestBody("text/plain".toMediaTypeOrNull())
 
-            viewModel.uploadStory(descriptionBody, multipartBody,latBody, lonBody).observe(this) { response ->
-                if (response.error == false) {
-                    Toast.makeText(
-                        this,
-                        getString(R.string.story_added_successfully), Toast.LENGTH_SHORT
-                    ).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+            viewModel.uploadStory(descriptionBody, multipartBody, latBody, lonBody)
+                .observe(this) { response ->
+                    if (response.error == false) {
+                        Toast.makeText(
+                            this,
+                            getString(R.string.story_added_successfully), Toast.LENGTH_SHORT
+                        ).show()
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+                    }
                 }
-            }
         } else {
             Toast.makeText(
                 this,

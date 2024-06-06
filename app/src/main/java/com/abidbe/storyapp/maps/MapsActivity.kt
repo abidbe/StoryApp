@@ -70,7 +70,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         val bounds = boundsBuilder.build()
                         mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100))
                     } else {
-                        Toast.makeText(this@MapsActivity, "No stories with location found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MapsActivity,
+                            "No stories with location found",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
 

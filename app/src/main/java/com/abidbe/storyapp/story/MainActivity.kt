@@ -6,9 +6,11 @@ import android.provider.Settings
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import com.abidbe.storyapp.R
 import com.abidbe.storyapp.api.ApiClient
 import com.abidbe.storyapp.auth.LoginActivity
@@ -34,10 +36,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         setContentView(binding.root)
 
+        storyAdapter = StoryAdapter().apply {
+            addLoadStateListener { loadState ->
+                binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
 
-        storyAdapter = StoryAdapter()
+            }
+        }
 
-        binding.rvStories.adapter = storyAdapter
+        binding.rvStories.adapter = storyAdapter.withLoadStateFooter(
+            footer = LoadingStateAdapter { storyAdapter.retry() }
+        )
 
         binding.actionLogout.setOnClickListener(this)
         binding.actionAddStory.setOnClickListener(this)
@@ -76,23 +84,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         viewModel = ViewModelProvider(this, StoryViewModelFactory(repository))
             .get(StoryViewModel::class.java)
 
-        viewModel.storyList.observe(this, Observer { stories ->
-            storyAdapter.updateStories(stories)
+        viewModel.storyList.observe(this, { stories ->
+            storyAdapter.submitData(lifecycle, stories)
         })
-
-        viewModel.loading.observe(this, Observer { loading ->
-            binding.progressBar.visibility = if (loading) View.VISIBLE else View.GONE
-        })
-
-        viewModel.error.observe(this, Observer { error ->
-            error?.let {
-                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-            }
-        })
-
-        viewModel.fetchStories()
     }
-
 
     override fun onClick(v: View?) {
         when (v) {

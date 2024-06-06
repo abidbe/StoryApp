@@ -12,16 +12,10 @@ import com.abidbe.storyapp.api.ListStoryItem
 import com.abidbe.storyapp.databinding.ItemStoryBinding
 import com.bumptech.glide.Glide
 import androidx.core.util.Pair
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 
-class StoryAdapter : RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
-
-    private val stories = mutableListOf<ListStoryItem>()
-
-    fun updateStories(newStories: List<ListStoryItem>) {
-        stories.clear()
-        stories.addAll(newStories)
-        notifyDataSetChanged()
-    }
+class StoryAdapter : PagingDataAdapter<ListStoryItem, StoryAdapter.StoryViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryViewHolder {
         val binding = ItemStoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -29,26 +23,23 @@ class StoryAdapter : RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
-        holder.bind(stories[position])
+        val story = getItem(position)
+        story?.let { holder.bind(it) }
     }
-
-    override fun getItemCount(): Int = stories.size
 
     inner class StoryViewHolder(private val binding: ItemStoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private var imgPhoto: ImageView = binding.ivItemPhoto
         private var tvName: TextView = binding.tvItemName
         private var tvDescription: TextView = binding.tvItemDescription
-        fun bind(story: ListStoryItem) {
 
+        fun bind(story: ListStoryItem) {
             tvName.text = story.name
             tvDescription.text = story.description
-
 
             Glide.with(binding.root.context).load(story.photoUrl).into(imgPhoto)
 
             binding.root.setOnClickListener {
-
                 val intent = Intent(binding.root.context, DetailStoryActivity::class.java)
                 intent.putExtra("STORY_ID", story.id)
                 val optionsCompat: ActivityOptionsCompat =
@@ -59,6 +50,21 @@ class StoryAdapter : RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
                         Pair(tvDescription, "transDescription")
                     )
                 binding.root.context.startActivity(intent, optionsCompat.toBundle())
+            }
+        }
+    }
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
+            override fun areItemsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(
+                oldItem: ListStoryItem,
+                newItem: ListStoryItem
+            ): Boolean {
+                return oldItem == newItem
             }
         }
     }
