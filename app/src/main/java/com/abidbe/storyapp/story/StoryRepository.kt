@@ -1,6 +1,12 @@
 package com.abidbe.storyapp.story
 
+import androidx.lifecycle.LiveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.abidbe.storyapp.api.ApiService
+import com.abidbe.storyapp.api.ListStoryItem
 import com.abidbe.storyapp.api.StoryResponse
 import com.abidbe.storyapp.api.UploadResponse
 import okhttp3.MultipartBody
@@ -19,8 +25,13 @@ class StoryRepository private constructor(private val apiService: ApiService) {
             }
     }
 
-    suspend fun getStories(): Response<StoryResponse> {
-        return apiService.getStories()
+    fun getStories(): LiveData<PagingData<ListStoryItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5
+            ),
+            pagingSourceFactory = { StoryPagingSource(apiService) }
+        ).liveData
     }
 
     suspend fun getStoryDetail(storyId: String) = apiService.getStoryDetail(storyId)
