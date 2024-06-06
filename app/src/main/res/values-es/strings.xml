@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ma Story</string>
+    <string name="email">Correo Electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="register">Registrarse</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="name">Nombre</string>
+    <string name="password_characters">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="invalid_email">Formato de correo electrónico no válido</string>
+    <string name="logout_successful">Cierre de sesión exitoso</string>
+    <string name="registration_successful">Registro exitoso</string>
+    <string name="registration_failed">Registro fallido</string>
+    <string name="login_successful">Inicio de sesión exitoso</string>
+    <string name="add_story">Agregar Historia</string>
+    <string name="permission_granted">Solicitud de permiso concedida</string>
+    <string name="permission_denied">Solicitud de permiso denegada</string>
+    <string name="no_image_selected">No se seleccionó ninguna imagen</string>
+    <string name="failed_picture">Error al tomar la foto</string>
+    <string name="story_added_successfully">Historia agregada con éxito</string>
+    <string name="please_select">Por favor seleccione una imagen y escriba una descripción</string>
+    <string name="description">Descripción</string>
+    <string name="choose_photo">Elegir Foto</string>
+    <string name="use_a_camera">Usar una Cámara</string>
+    <string name="or">O</string>
+</resources>

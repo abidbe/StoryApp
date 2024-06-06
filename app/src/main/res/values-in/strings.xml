@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ma Story</string>
+    <string name="email">Email</string>
+    <string name="password">Kata Sandi</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="logout">Keluar</string>
+    <string name="name">Nama</string>
+    <string name="password_characters">Kata sandi harus minimal 8 karakter</string>
+    <string name="invalid_email">Format email tidak valid</string>
+    <string name="logout_successful">Berhasil keluar</string>
+    <string name="registration_successful">Pendaftaran berhasil</string>
+    <string name="registration_failed">Pendaftaran gagal</string>
+    <string name="login_successful">Berhasil masuk</string>
+    <string name="add_story">Tambah Cerita</string>
+    <string name="permission_granted">Permintaan izin diberikan</string>
+    <string name="permission_denied">Permintaan izin ditolak</string>
+    <string name="no_image_selected">Tidak ada gambar yang dipilih</string>
+    <string name="failed_picture">Gagal mengambil gambar</string>
+    <string name="story_added_successfully">Cerita berhasil ditambahkan</string>
+    <string name="please_select">Silakan pilih gambar dan masukkan deskripsi</string>
+    <string name="description">Deskripsi</string>
+    <string name="choose_photo">Pilih Foto</string>
+    <string name="use_a_camera">Gunakan Kamera</string>
+    <string name="or">Atau</string>
+</resources>

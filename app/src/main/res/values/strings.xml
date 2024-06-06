@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Ma Story</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="logout">Logout</string>
+    <string name="name">Name</string>
+    <string name="password_characters">Password must be at least 8 characters</string>
+    <string name="invalid_email">Invalid email format</string>
+    <string name="logout_successful">Logout successful</string>
+    <string name="registration_successful">Registration successful</string>
+    <string name="registration_failed">Registration failed</string>
+    <string name="login_successful">Login Successful</string>
+    <string name="add_story">Add Story</string>
+    <string name="permission_granted">Permission request granted</string>
+    <string name="permission_denied">Permission request denied</string>
+    <string name="no_image_selected">No image selected</string>
+    <string name="failed_picture">Failed to take picture</string>
+    <string name="story_added_successfully">Story added successfully</string>
+    <string name="please_select">Please select an image and enter a description</string>
+    <string name="description">Description</string>
+    <string name="choose_photo">Choose Photo</string>
+    <string name="use_a_camera">Use a Camera</string>
+    <string name="or">Or</string>
+    <string name="change_language">Change language</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="use_current_location">Use Current Location</string>
+</resources>
