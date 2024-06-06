@@ -10,7 +10,6 @@ import com.abidbe.storyapp.R
 import com.abidbe.storyapp.api.ApiClient
 import com.abidbe.storyapp.auth.UserPreferences
 import com.abidbe.storyapp.auth.dataStore
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -94,7 +93,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Set a custom map style (optional)
         val style = MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style)
         mMap.setMapStyle(style)
     }

@@ -22,15 +22,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_alignParentStart="true"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="60dp"
@@ -51,26 +50,26 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/action_maps"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
-                    android:src="@drawable/map"
-                    android:contentDescription="@string/add_story" />
+                    android:contentDescription="@string/add_story"
+                    android:src="@drawable/map" />
 
                 <ImageButton
                     android:id="@+id/action_add_story"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#00FFFFFF"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/plus"
-                    android:contentDescription="@string/add_story" />
+                    android:background="#00FFFFFF"
+                    android:contentDescription="@string/add_story"
+                    android:src="@drawable/plus" />
 
                 <ImageButton
                     android:id="@+id/change_language"
@@ -78,8 +77,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:background="#00FFFFFF"
-                    android:src="@drawable/language"
-                    android:contentDescription="@string/change_language" />
+                    android:contentDescription="@string/change_language"
+                    android:src="@drawable/language" />
 
                 <ImageButton
                     android:id="@+id/action_logout"
@@ -87,11 +86,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:background="#00FFFFFF"
-                    android:src="@drawable/logout"
-                    android:contentDescription="@string/logout" />
+                    android:contentDescription="@string/logout"
+                    android:src="@drawable/logout" />
             </LinearLayout>
         </RelativeLayout>
-
 
 
         <androidx.recyclerview.widget.RecyclerView

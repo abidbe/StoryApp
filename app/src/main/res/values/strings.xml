@@ -26,5 +26,6 @@
     <string name="change_language">Change language</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="use_current_location">Use Current Location</string>
-    <string name="retry">Coba lagi</string>
+    <string name="retry">Retry</string>
+    <string name="error_loading_stories">Error loading stories</string>
 </resources>

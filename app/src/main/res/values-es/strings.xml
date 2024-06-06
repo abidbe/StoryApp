@@ -24,4 +24,9 @@
     <string name="choose_photo">Elegir Foto</string>
     <string name="use_a_camera">Usar una Cámara</string>
     <string name="or">O</string>
+    <string name="change_language">Cambiar idioma</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="use_current_location">Usar Ubicación Actual</string>
+    <string name="retry">Reintentar</string>
+    <string name="error_loading_stories">Error al cargar historias</string>
 </resources>
