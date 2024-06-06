@@ -48,6 +48,7 @@ class StoryRepository private constructor(private val apiService: ApiService) {
             apiService.uploadStory(description, photo)
         }
     }
+
     suspend fun getStoriesWithLocation(location: Int): Response<StoryResponse> {
         return apiService.getStoriesWithLocation(location)
     }
