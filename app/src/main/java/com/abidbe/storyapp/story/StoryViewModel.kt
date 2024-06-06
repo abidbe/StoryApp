@@ -10,10 +10,6 @@ import com.abidbe.storyapp.api.ListStoryItem
 import kotlinx.coroutines.launch
 
 class StoryViewModel(private val repository: StoryRepository) : ViewModel() {
-
-
     val storyList: LiveData<PagingData<ListStoryItem>> =
         repository.getStories().cachedIn(viewModelScope)
-
-
 }

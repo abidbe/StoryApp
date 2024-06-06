@@ -64,7 +64,7 @@ data class ListStoryItem(
     val lon: Double? = null
 
 
-    ) : Parcelable
+) : Parcelable
 
 data class StoryDetailResponse(
     val story: ListStoryItem
