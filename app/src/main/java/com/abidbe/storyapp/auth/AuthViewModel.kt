@@ -20,6 +20,9 @@ class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
     private val _loginResult = MutableLiveData<LoginResponse>()
     val loginResult: LiveData<LoginResponse> = _loginResult
 
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> = _errorMessage
+
     fun register(name: String, email: String, password: String) {
         viewModelScope.launch {
             try {
@@ -28,7 +31,8 @@ class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
             } catch (e: HttpException) {
                 val jsonInString = e.response()?.errorBody()?.string()
                 val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
-                Toast.makeText(null, errorBody.message, Toast.LENGTH_SHORT).show()
+                val errorMessage = errorBody?.message ?: "Unknown error occurred"
+                _errorMessage.postValue(errorMessage)
             }
         }
     }
@@ -41,8 +45,8 @@ class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
             } catch (e: HttpException) {
                 val jsonInString = e.response()?.errorBody()?.string()
                 val errorBody = Gson().fromJson(jsonInString, ErrorResponse::class.java)
-                Toast.makeText(null, errorBody.message, Toast.LENGTH_SHORT).show()
-
+                val errorMessage = errorBody?.message ?: "Unknown error occurred"
+                _errorMessage.postValue(errorMessage)
             }
         }
     }

@@ -36,6 +36,11 @@ class LoginActivity : AppCompatActivity() {
         val viewModelFactory = AuthViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(AuthViewModel::class.java)
 
+        viewModel.errorMessage.observe(this) { errorMessage ->
+            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+            binding.progressBar.visibility = View.GONE
+        }
+
         binding.btnLogin.setOnClickListener {
             val email = binding.edLoginEmail.text.toString()
             val password = binding.edLoginPassword.text.toString()
@@ -56,6 +61,8 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
             }
+
+
         }
 
         binding.btnRgs.setOnClickListener {
